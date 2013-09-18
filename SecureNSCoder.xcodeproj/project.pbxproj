@@ -18,6 +18,9 @@
 		E264878817E8C02C00539749 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E264878717E8C02C00539749 /* Default-568h@2x.png */; };
 		E264878B17E8C02C00539749 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E264878917E8C02C00539749 /* MainStoryboard.storyboard */; };
 		E264878E17E8C02C00539749 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E264878D17E8C02C00539749 /* ViewController.m */; };
+		E264879617E8C1F200539749 /* SecureArchiverDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E264879517E8C1F200539749 /* SecureArchiverDelegate.m */; };
+		E264879917E8C6F500539749 /* SimpleKeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E264879817E8C6F500539749 /* SimpleKeychainWrapper.m */; };
+		E264879B17E8CA7800539749 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E264879A17E8CA7800539749 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,11 @@
 		E264878A17E8C02C00539749 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		E264878C17E8C02C00539749 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E264878D17E8C02C00539749 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E264879417E8C1F200539749 /* SecureArchiverDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecureArchiverDelegate.h; sourceTree = "<group>"; };
+		E264879517E8C1F200539749 /* SecureArchiverDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecureArchiverDelegate.m; sourceTree = "<group>"; };
+		E264879717E8C6F500539749 /* SimpleKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKeychainWrapper.h; sourceTree = "<group>"; };
+		E264879817E8C6F500539749 /* SimpleKeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKeychainWrapper.m; sourceTree = "<group>"; };
+		E264879A17E8CA7800539749 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E264879B17E8CA7800539749 /* Security.framework in Frameworks */,
 				E264877217E8C02C00539749 /* UIKit.framework in Frameworks */,
 				E264877417E8C02C00539749 /* Foundation.framework in Frameworks */,
 				E264877617E8C02C00539749 /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +65,7 @@
 		E264876517E8C02C00539749 = {
 			isa = PBXGroup;
 			children = (
+				E264879A17E8CA7800539749 /* Security.framework */,
 				E264877717E8C02C00539749 /* SecureNSCoder */,
 				E264877017E8C02C00539749 /* Frameworks */,
 				E264876F17E8C02C00539749 /* Products */,
@@ -83,12 +93,16 @@
 		E264877717E8C02C00539749 /* SecureNSCoder */ = {
 			isa = PBXGroup;
 			children = (
+				E264879717E8C6F500539749 /* SimpleKeychainWrapper.h */,
+				E264879817E8C6F500539749 /* SimpleKeychainWrapper.m */,
 				E264878017E8C02C00539749 /* AppDelegate.h */,
 				E264878117E8C02C00539749 /* AppDelegate.m */,
 				E264878917E8C02C00539749 /* MainStoryboard.storyboard */,
 				E264878C17E8C02C00539749 /* ViewController.h */,
 				E264878D17E8C02C00539749 /* ViewController.m */,
 				E264877817E8C02C00539749 /* Supporting Files */,
+				E264879417E8C1F200539749 /* SecureArchiverDelegate.h */,
+				E264879517E8C1F200539749 /* SecureArchiverDelegate.m */,
 			);
 			path = SecureNSCoder;
 			sourceTree = "<group>";
@@ -134,7 +148,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = isecpartners;
+				ORGANIZATIONNAME = "iSEC Partners";
 			};
 			buildConfigurationList = E264876917E8C02C00539749 /* Build configuration list for PBXProject "SecureNSCoder" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -176,6 +190,8 @@
 				E264877E17E8C02C00539749 /* main.m in Sources */,
 				E264878217E8C02C00539749 /* AppDelegate.m in Sources */,
 				E264878E17E8C02C00539749 /* ViewController.m in Sources */,
+				E264879617E8C1F200539749 /* SecureArchiverDelegate.m in Sources */,
+				E264879917E8C6F500539749 /* SimpleKeychainWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +314,7 @@
 				E264879317E8C02C00539749 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

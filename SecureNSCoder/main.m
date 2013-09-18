@@ -2,8 +2,8 @@
 //  main.m
 //  SecureNSCoder
 //
-//  Created by tom on 9/17/13.
-//  Copyright (c) 2013 isecpartners. All rights reserved.
+//  Created by Tom Daniels on 9/17/13.
+//  Copyright (c) 2013 iSEC Partners. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
