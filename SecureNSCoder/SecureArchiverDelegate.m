@@ -52,7 +52,19 @@
 - (BOOL)crypt:(NSData *)object withOperation:(CCOperation)operation andOutput:(NSMutableData **)output
 {
     NSData *cryptKey = [SimpleKeychainWrapper fetchFromKeychain:NSCoderCryptoKey forService:NSCoderCryptoService];
-    NSData * iv = [SimpleKeychainWrapper fetchFromKeychain:NSCoderIvKey forService:NSCoderCryptoService];
+    NSMutableData * iv;
+    
+    if (operation == kCCDecrypt) {
+        NSRange ivRange = {0,32};
+        iv = [[NSMutableData alloc] initWithData:[object subdataWithRange:ivRange]];
+        
+        NSRange dataRange = {32, [object length]-32};
+        object = [object subdataWithRange:dataRange];
+    } else {
+        iv = [[NSMutableData alloc] initWithLength:kCCKeySizeAES256];
+        SecRandomCopyBytes(kSecRandomDefault, kCCKeySizeAES256, [iv mutableBytes]);
+    }
+    
     size_t length = 0;
     
     size_t bufferSize = [object length] + kCCBlockSizeAES128;
@@ -71,10 +83,14 @@
                                      &length);
     
     if (status == kCCSuccess) {
-        *output = [NSMutableData dataWithBytes:buff length:length];
+        if (operation == kCCEncrypt) {
+            *output = [[NSMutableData alloc] initWithData:iv];
+            [*output appendBytes:buff length:length];
+        } else {
+            *output = [NSMutableData dataWithBytes:buff length:length];
+        }
         return YES;
     } else {
-        NSLog(@"Encryption failed! %d", status);
         return NO;
     }
 }
