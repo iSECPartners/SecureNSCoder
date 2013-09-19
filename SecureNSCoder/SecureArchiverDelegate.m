@@ -91,6 +91,7 @@
         }
         return YES;
     } else {
+        NSLog(@"Encryption failed! %d", status);
         return NO;
     }
 }

@@ -10,9 +10,8 @@
 #import <CommonCrypto/CommonCrypto.h>
 
 
-#define NSCoderCryptoKey @"com.iSEC Partners.CryptoKey"
-#define NSCoderIvKey @"com.iSEC Partners.IvKey"
-#define NSCoderCryptoService @"com.iSEC Partners.NSCoder+Crypto"
+#define NSCoderCryptoKey @"com.isecpartners.CryptoKey"
+#define NSCoderCryptoService @"com.isecpartners.NSCoder+Crypto"
 
 @interface SimpleKeychainWrapper : NSObject
 + (id)fetchFromKeychain:(NSString *)identifier forService:(NSString *)service;
