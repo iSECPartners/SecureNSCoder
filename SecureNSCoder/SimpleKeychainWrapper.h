@@ -15,6 +15,6 @@
 
 @interface SimpleKeychainWrapper : NSObject
 + (id)fetchFromKeychain:(NSString *)identifier forService:(NSString *)service;
-+ (id)addToKeychain:(NSString *)identifier forService:(NSString *)service;
++ (BOOL)addToKeychain:(NSData *)item withIdentifier:(NSString *)identifier forService:(NSString *)service;
 + (NSMutableDictionary *)dictForId:(NSString *)identifier withService:(NSString *)service;
 @end

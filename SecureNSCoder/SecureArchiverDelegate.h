@@ -11,6 +11,4 @@
 
 @interface SecureArchiverDelegate : NSObject <NSKeyedArchiverDelegate, NSKeyedUnarchiverDelegate>
 
-- (BOOL)crypt:(NSData *)object withOperation:(CCOperation)operation andOutput:(NSMutableData **)output;
-
 @end

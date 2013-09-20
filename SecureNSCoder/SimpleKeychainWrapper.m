@@ -9,6 +9,7 @@
 #import "SimpleKeychainWrapper.h"
 
 @implementation SimpleKeychainWrapper
+
 + (NSMutableData *)fetchFromKeychain:(NSString *)identifier forService:(NSString *)service
 {
     NSMutableDictionary *searchDictionary = [self dictForId:identifier withService:service];
@@ -24,27 +25,24 @@
     if (status == errSecSuccess) {
         return (__bridge id)(result);
     } else {
-        return [self addToKeychain:identifier forService:service];
+        return nil;
     }
 }
 
-+ (NSMutableData *)addToKeychain:(NSString *)identifier forService:(NSString *)service
++ (BOOL)addToKeychain:(NSData *)item withIdentifier:(NSString *)identifier forService:(NSString *)service
 {
     NSMutableDictionary *dictionary = [self dictForId:identifier withService:service];
     
     [dictionary setObject:(__bridge id)kSecAttrAccessibleWhenUnlockedThisDeviceOnly forKey:(__bridge id)kSecAttrAccessible];
-    
-    NSMutableData *item = [NSMutableData dataWithLength:kCCKeySizeAES256];
-    SecRandomCopyBytes(kSecRandomDefault, kCCKeySizeAES256, [item mutableBytes]);
     
     [dictionary setObject:item forKey:(__bridge id)kSecValueData];
     
     OSStatus status = SecItemAdd((__bridge CFDictionaryRef)dictionary, NULL);
     
     if (status == errSecSuccess) {
-        return item;
+        return YES;
     }
-    return nil;
+    return NO;
 }
 
 + (NSMutableDictionary *)dictForId:(NSString *)identifier withService:(NSString *)service
