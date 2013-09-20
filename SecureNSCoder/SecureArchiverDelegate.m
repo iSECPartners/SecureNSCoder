@@ -130,10 +130,12 @@
         } else {
             *output = [NSMutableData dataWithBytes:buff length:length];
         }
+        free(buff);
         return YES;
         
     } else {
         NSLog(@"Encryption failed! %d", status);
+        free(buff);
         return NO;
     }
 }
